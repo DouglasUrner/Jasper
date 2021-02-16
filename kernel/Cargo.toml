@@ -9,5 +9,5 @@ edition = "2018"
 [profile.dev]
 panic = "abort"
 
-[provile.release]
+[profile.release]
 panic = "abort"
