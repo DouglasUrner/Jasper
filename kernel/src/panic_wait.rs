@@ -1,9 +1,9 @@
-//! Dummy Panic Handler
+//! Panic Handler
 
 use crate::cpu;
 use core::panic::PanicInfo;
 
 #[panic_handler]
 fn panic(_info: &PanicInfo) -> ! {
-    cpu::wait_forever();
+    cpu::wait_forever()
 }
