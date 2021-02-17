@@ -23,8 +23,9 @@ RUSTFLAGS			= -C link-arg=-T$(LINK_SCRIPT) $(RUSTC_MISC_FLAGS)
 FEATURES 			= bsp_$(BSP)
 COMPILE_FLAGS		= --target=$(TARGET) --features $(FEATURES)
 RUSTC_CMD			= cargo rustc $(COMPILE_FLAGS)
+CHECK_CMD			= cargo check $(COMPILE_FLAGS)
 
-.PHONY: all kernel qemu
+.PHONY: all kernel qemu check
 
 all: kernel
 
@@ -34,6 +35,8 @@ kernel:
 qemu: kernel
 	$(QEMU_CMD) -M $(QUEM_MACH) $(QEMU_FLAGS) -kernel $(KERNEL_PATH)
 
+check:
+	@RUSTFLAGS="$(RUSTFLAGS)" $(CHECK_CMD) --message-format=json
+
 clean:
 	rm -rf target $(KERNEL_BIN)
-	
