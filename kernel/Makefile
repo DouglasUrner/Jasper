@@ -7,7 +7,9 @@ TARGET				= aarch64-unknown-none
 VERSION				= debug
 QEMU_CMD			= qemu-system-aarch64
 QUEM_MACH			= raspi3
-QEMU_FLAGS			= -d in_asm -display none
+# Trace as assembler
+# QEMU_FLAGS			= -d in_asm -display none
+QEMU_FLAGS			= -serial stdio -display none
 RUSTC_MISC_FLAGS	= -C target-cpu=cortex-a53
 LINK_SCRIPT			= src/bsp/raspberrypi/link.ld
 else ifeq ($(BSP), rpi4)
